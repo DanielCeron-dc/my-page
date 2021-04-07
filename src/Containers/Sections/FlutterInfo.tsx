@@ -3,6 +3,7 @@ import logo from "../../Assets/flutter.svg";
 import Column from '../../Components/Layout/Column';
 import Spacer from '../../Components/Layout/Spacer';
 import TransparentBox from '../../Components/UI/TransparentBox';
+import FlutterProjects from '../subSections/FlutterProjects';
 import styles from "./animations.module.css";
 
 
@@ -19,7 +20,7 @@ const FlutterInfo:React.FC<IProps> = (props) => {
             <h1 style = {{color: "white"}}>Flutter Projects</h1>
             <Spacer/>
             <TransparentBox> 
-                
+                <FlutterProjects/>
             </TransparentBox>
             <Spacer/>
         </Column>
