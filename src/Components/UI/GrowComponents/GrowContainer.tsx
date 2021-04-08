@@ -2,7 +2,8 @@ import React, { ReactNode } from 'react';
 import styles from "./Grow.module.css"; 
 
 type GrowContainerProps = {
-    children: ReactNode
+    children: ReactNode,
+    column: boolean
 };
 
 /** THIS ONLY WORKS WITH 3 GROW COMPONENTS  

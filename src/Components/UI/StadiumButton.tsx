@@ -30,6 +30,7 @@ const StadiumButton:React.FC<StadiumButtonProps> = (props) => {
         style = {Hover ?   {...style, ...hoverStyle} : style }
         onMouseOver = {() => setHover(true)}
         onMouseLeave = {() => setHover(false)}
+        onClick = {props.onClick}
         >
         {props.children}
     </button>

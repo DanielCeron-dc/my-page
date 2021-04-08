@@ -5,6 +5,8 @@ import './App.css';
 import PersonalInfo from './Sections/PersonalInfo';
 import ReactInfo from './Sections/ReactInfo';
 import FlutterInfo from './Sections/FlutterInfo';
+import usePageDimension from "../hooks/usePageDimensions";
+import Spacer from "../Components/Layout/Spacer";
 
 let gradiant1:string = "linear-gradient(0deg, rgba(97,218,251,1) 21%, rgba(94,33,107,1) 71%)";
 let gradiant2:string = "linear-gradient(0deg, rgba(97,218,251,1) 16%, rgba(32,35,42,1) 75%)";
@@ -14,18 +16,23 @@ function App() {
   const [HoverSectionOne, setHoverSectionOne] = useState<boolean>(false);
   const [HoverSectionTwo, setHoverSectionTwo] = useState<boolean>(false);
   const [HoverSectionThree, setHoverSectionThree] = useState<boolean>(false);
-  
+  const [height, width] = usePageDimension(); 
+
+  const desktop:boolean = width > 1000; 
   return (
     <div className="App" >
-        <GrowContainer>
-          <Grow color = {gradiant1} onHover = {() => setHoverSectionOne(true)} onMouseLeave = {() => setHoverSectionOne(false)}>
+        <GrowContainer column>
+          <Grow color = {gradiant1} onHover = {() => setHoverSectionOne(true)} onMouseLeave = {() => setHoverSectionOne(false)} TableCell = {desktop}>
             <PersonalInfo hover={HoverSectionOne}/>
+            {!desktop ? <Spacer height = {100}/> : <></>}
           </Grow>
-          <Grow color = {gradiant2} onHover = {() => setHoverSectionTwo(true)} onMouseLeave = {() => setHoverSectionTwo(false)}>
+          <Grow color = {gradiant2} onHover = {() => setHoverSectionTwo(true)} onMouseLeave = {() => setHoverSectionTwo(false)} TableCell = {desktop}>
             <ReactInfo  hover = {HoverSectionTwo}/>
+            {!desktop ? <Spacer height = {100}/> : <></>}
           </Grow>
-          <Grow color = {gradiant3} onHover = {() => setHoverSectionThree(true)} onMouseLeave = {() => setHoverSectionThree(false)}>
+          <Grow color = {gradiant3} onHover = {() => setHoverSectionThree(true)} onMouseLeave = {() => setHoverSectionThree(false)} TableCell = {desktop}>
             <FlutterInfo hover = {HoverSectionThree}/>
+            {!desktop ? <Spacer height = {100}/> : <></>}
           </Grow>
         </GrowContainer>
     </div>

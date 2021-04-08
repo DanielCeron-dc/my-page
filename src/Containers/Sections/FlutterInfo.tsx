@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import logo from "../../Assets/flutter.svg"; 
 import Column from '../../Components/Layout/Column';
 import Spacer from '../../Components/Layout/Spacer';
+import AddNewProjectMenu from '../../Components/UI/AddNewProjectMenu';
+import BackDrop from '../../Components/UI/BackDrop';
+import StadiumButton from '../../Components/UI/StadiumButton';
 import TransparentBox from '../../Components/UI/TransparentBox';
+import { AuthContext } from '../../Provider/Auth/AuthContext';
 import FlutterProjects from '../subSections/FlutterProjects';
 import styles from "./animations.module.css";
 
@@ -12,7 +16,16 @@ interface IProps {
 }
 
 const FlutterInfo:React.FC<IProps> = (props) => {
+ 
+    const {user} = useContext(AuthContext); 
+    const [AddNewProject, setAddNewProjectMenu] = useState<boolean>(false); 
     return <Column height = "95%">
+            {
+                AddNewProject? <BackDrop onClick = {() => setAddNewProjectMenu(false)}>
+                    <AddNewProjectMenu language = "Flutter"/>
+                </BackDrop> : <></>
+            }
+
             <img src={logo} alt="React Logo" height = "90"
                 style = {{margin: "15px 0px 15px 0px"}}
                 className = {props.hover ? styles.FlutterLogo : ""}
@@ -23,6 +36,9 @@ const FlutterInfo:React.FC<IProps> = (props) => {
                 <FlutterProjects/>
             </TransparentBox>
             <Spacer/>
+            {user ? <StadiumButton onClick= {() => {setAddNewProjectMenu(true) 
+            }}> + </StadiumButton> : <></> }
+            
         </Column>
 }
 
