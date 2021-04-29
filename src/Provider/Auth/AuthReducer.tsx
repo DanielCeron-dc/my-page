@@ -21,7 +21,7 @@ export const initialState:IState = {
     user: null
 }
 
-export default (state:IState, action:IAction):IState =>{
+const reducer = (state:IState, action:IAction):IState =>{
 
     switch (action.type) {
         case "CHANGE_USER_STATE":
@@ -31,3 +31,5 @@ export default (state:IState, action:IAction):IState =>{
     }
 
 }
+
+export default reducer; 

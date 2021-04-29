@@ -1,6 +1,6 @@
 html, body, #root, .App {
   height: 100%;
-  background-color: rgb(101, 193, 221);
+  background-color: rgb(98,219,252);
 }
 
 .App {
@@ -13,9 +13,6 @@ html, body, #root, .App {
 ::-webkit-scrollbar-button {
   width: 0px;
 }
-
-
-
 
 /* Track */
 ::-webkit-scrollbar-track {

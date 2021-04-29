@@ -18,7 +18,7 @@ const PersonalInfo:React.FC<IProps> = (props) => {
     const {user} = useContext(AuthContext); 
     const [Count, setCount] = useState(0);
     useEffect(() => {
-        if(Count == 3){
+        if(Count === 3){
             if (user == null ){
                 signInWithGoogle();
             }else{
@@ -28,10 +28,9 @@ const PersonalInfo:React.FC<IProps> = (props) => {
         setTimeout(() => {
             setCount(0);
         }, 1000);
-    }, [Count]);
+    }, [Count, user]);
 
     return <Column height="95%">
-        
         {props.hover ?
             <>
                 <img src={logo} alt="Perfil foto" height="90" style={{ borderRadius: 50, }} />

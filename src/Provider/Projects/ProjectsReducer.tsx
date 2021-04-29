@@ -7,7 +7,8 @@ export interface IState {
 export interface IProjectInfo {
     description: string;
     link: string; 
-    programmingLanguage: string; 
+    language: string;
+    key: string;
 }
 
 export const initialState:IState = {
@@ -30,16 +31,17 @@ type IAction =
     },
 }
 
-export default (state:IState, action:IAction ): IState => {
+const reducer =  (state:IState, action:IAction ): IState => {
     switch (action.type) {
         case "CHANGE_LOADING_STATE":
-            return {...state, loading: action.payload.loading} 
+            return {...state, loading: action.payload.loading}
         case "FETCH_PROJECTS":
             return {...state, ReactProjects: action.payload.ReactProjects, FlutterProjects: action.payload.FlutterProjects} 
         default:
             return state; 
     }
 }
+export default reducer; 
 
 
 

@@ -1,17 +1,20 @@
 import React from 'react';
+import './index.css';
+
 import ReactDOM from 'react-dom';
 import App from './Containers/App';
-import './index.css';
-import ProjectsProvider from "./Provider"; 
+import ProjectsProvider from "./Provider/Projects"; 
 import AuthProvider from "./Provider/Auth"; 
+import ModalProvider from "./Provider/Modal"; 
 
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
     <ProjectsProvider>
       <AuthProvider>
-        <App />
+        <ModalProvider>
+          <App />
+        </ModalProvider>
       </AuthProvider>
     </ProjectsProvider>
   </React.StrictMode>,

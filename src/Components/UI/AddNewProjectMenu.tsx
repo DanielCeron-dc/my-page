@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { ProjectsContext } from '../../Provider/ProjectsContext';
+import { ProjectsContext } from '../../Provider/Projects/ProjectsContext';
 
 type fixedMenuProps = {
     language: string; 
@@ -19,7 +19,7 @@ const AddNewProjectMenu:React.FC<fixedMenuProps> = (props) => {
     return <div 
         onClick = {(e) => {e.stopPropagation()}}
         style ={{
-        position: "fixed",
+        position: "relative",
         width: "500px",
         height: "200px",
         margin: "5% auto", /* Will not center vertically and won't work in IE6/7. */

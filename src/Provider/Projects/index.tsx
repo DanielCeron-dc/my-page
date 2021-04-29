@@ -1,7 +1,7 @@
 import React, { useEffect, useReducer } from 'react';
 import ProjectsReducer, {initialState, IProjectInfo} from "./ProjectsReducer"; 
 import { ProjectsContext} from "./ProjectsContext";
-import { firebase} from "../firebase";
+import { firebase} from "../../firebase";
 
 const db = firebase.database(); 
 
@@ -15,8 +15,9 @@ const Index:React.FC= (props) => {
         const FlutterProjects: IProjectInfo[] = []; 
         db.ref().once("value").then(snapshot => {
             snapshot.forEach(child => {
-                const value = child.val();
-                if(value["language"] == "React"){
+                const value:IProjectInfo = child.val();
+                value.key = child.key ? child.key : "";
+                if(value.language === "React"){
                     ReactProjects.push(value);
                 }else{
                     FlutterProjects.push(value);

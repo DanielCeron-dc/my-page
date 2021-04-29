@@ -4,7 +4,7 @@ import usePageDimension from '../../hooks/usePageDimensions';
 
 const TransparentBox:React.FC = (props) => {
     
-    const [height, width] = usePageDimension(); 
+    const [ width] = usePageDimension(); 
 
     const desktop:boolean = width > 1000; 
 
