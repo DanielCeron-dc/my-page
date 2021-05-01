@@ -30,7 +30,7 @@ const InformationContainer:React.FC = () => {
         Contacto: damusan21@gmail.com
     </h4>
 
-    <a href = {"https://github.com/DanielCeron-dc"}>
+    <a href = {"https://github.com/DanielCeron-dc"} >
         <StadiumButton onClick = {() => {}}>
                 <img src={GithubLogo} alt="github logo" height = "50" style = {{borderRadius: 50 , }}/> 
             </StadiumButton> 

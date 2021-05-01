@@ -31,6 +31,7 @@ const PersonalInfo:React.FC<IProps> = (props) => {
     }, [Count, user]);
 
     return <Column height="95%">
+        
         {props.hover ?
             <>
                 <img src={logo} alt="Perfil foto" height="90" style={{ borderRadius: 50, }} />
@@ -42,11 +43,12 @@ const PersonalInfo:React.FC<IProps> = (props) => {
                 <h1 style={{ color: "white" }}>Mi Portafolio</h1>
             </>}
         <Spacer />
-        <TransparentBox>
+        <TransparentBox >
             <InformationContainer />
         </TransparentBox>
         {user ? <h6>{user.email}</h6> : <></> }
         <Spacer />
+       
     </Column>
 }
 export default React.memo(PersonalInfo);
