@@ -14,8 +14,11 @@ const ComponentWithDimensions:React.FC = () => {
           && <Rectangle 
                 initialX = {0} 
                 initialY = {0}  
-                finalX = {width-50} 
-                finalY ={100}/>
+                finalX = {width-50}
+                finalY ={100}
+                width = {50}
+                height = {10}
+                />
         }
     </div>
   );

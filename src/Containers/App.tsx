@@ -1,4 +1,5 @@
 import {useContext, useState} from "react"
+import {Route} from "react-router-dom"; 
 import './App.css';
 
 import Grow from '../Components/UI/GrowComponents/Grow';
@@ -14,7 +15,7 @@ let gradiant1:string = "linear-gradient(0deg, rgba(97,218,251,1) 21%, rgba(94,33
 let gradiant2:string = "linear-gradient(0deg, rgba(97,218,251,1) 16%, rgba(32,35,42,1) 75%)";
 let gradiant3:string = "linear-gradient(0deg, rgba(97,218,251,1) 21%, rgba(5,59,103,1) 76%)";
 
-function App() {
+const Content:React.FC = ()  => {
   const [HoverSectionOne, setHoverSectionOne] = useState<boolean>(false);
   const [HoverSectionTwo, setHoverSectionTwo] = useState<boolean>(false);
   const [HoverSectionThree, setHoverSectionThree] = useState<boolean>(false);
@@ -22,23 +23,29 @@ function App() {
   const {Modal} = useContext(ModalContext);
 
   const desktop:boolean = width > 1000; 
+  return  <>
+  {Modal}
+  <GrowContainer column>
+    <Grow color = {gradiant1} onHover = {() => setHoverSectionOne(true)} onMouseLeave = {() => setHoverSectionOne(false)} TableCell = {desktop}>
+      <PersonalInfo hover={HoverSectionOne}/>
+      {!desktop ? <Spacer height = {100}/> : <></>}
+    </Grow>
+    <Grow color = {gradiant2} onHover = {() => setHoverSectionTwo(true)} onMouseLeave = {() => setHoverSectionTwo(false)} TableCell = {desktop}>
+      <ReactInfo  hover = {HoverSectionTwo}/>
+      {!desktop ? <Spacer height = {100}/> : <></>}
+    </Grow>
+    <Grow color = {gradiant3} onHover = {() => setHoverSectionThree(true)} onMouseLeave = {() => setHoverSectionThree(false)} TableCell = {desktop}>
+      <FlutterInfo hover = {HoverSectionThree}/>
+      {!desktop ? <Spacer height = {100}/> : <></>}
+    </Grow>
+  </GrowContainer>
+</> 
+}
+
+function App() {
   return (
     <div className="App" >
-        {Modal}
-        <GrowContainer column>
-          <Grow color = {gradiant1} onHover = {() => setHoverSectionOne(true)} onMouseLeave = {() => setHoverSectionOne(false)} TableCell = {desktop}>
-            <PersonalInfo hover={HoverSectionOne}/>
-            {!desktop ? <Spacer height = {100}/> : <></>}
-          </Grow>
-          <Grow color = {gradiant2} onHover = {() => setHoverSectionTwo(true)} onMouseLeave = {() => setHoverSectionTwo(false)} TableCell = {desktop}>
-            <ReactInfo  hover = {HoverSectionTwo}/>
-            {!desktop ? <Spacer height = {100}/> : <></>}
-          </Grow>
-          <Grow color = {gradiant3} onHover = {() => setHoverSectionThree(true)} onMouseLeave = {() => setHoverSectionThree(false)} TableCell = {desktop}>
-            <FlutterInfo hover = {HoverSectionThree}/>
-            {!desktop ? <Spacer height = {100}/> : <></>}
-          </Grow>
-        </GrowContainer>
+        <Route path = {["/:id", "/" ]} component = {Content}/>
     </div>
   );
 }

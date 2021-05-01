@@ -5,17 +5,19 @@ interface IProps {
     initialX: number,
     initialY:number,
     finalX: number, 
-    finalY: number
+    finalY: number, 
+    width: number, 
+    height: number,
 }
 
 const bounceTransition: Transition | undefined= {
     y: {
-      duration: 1,
+      duration: 3,
       type: "spring", 
-     yoyo: Infinity
+      yoyo: Infinity
     },
     backgroundColor: {
-      duration: 1,
+      duration: 6,
       yoyo: Infinity,
       ease: "easeOut",
       repeatDelay: 0.8,
@@ -23,26 +25,25 @@ const bounceTransition: Transition | undefined= {
   }
 
 const Rectanglestyle: CSSProperties  = {
-    height: 100 ,
-    width: 30, 
+   
     backgroundColor: "rgba(255, 255, 255, 0.5)" , 
     zIndex: 10, 
     position: "absolute", 
     left: 0 , 
     top: 0, 
     borderRadius: "20%", 
+    filter: "blur(20px)"
 }
 
 
 const Rectangle:React.FC<IProps> = (props) => {
     return <motion.div 
-      
         animate = {{
             x: [props.initialX, props.finalX], 
             y: [props.initialY, props.finalY],
-          backgroundColor: ["rgba(255, 255, 255, 0.5)", "rgba(255, 255, 0, 0.2)"],
+          backgroundColor: ["rgba(255, 255, 255, 0.5)", "rgba(0,0 , 0, 0.2)"],
         } } 
-        style= {Rectanglestyle}
+        style= {{ ...Rectanglestyle , height: props.height , width: props.width, }}
         transition = {bounceTransition}
         
     >

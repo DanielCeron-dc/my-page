@@ -1,4 +1,7 @@
 import React, { useContext } from 'react';
+import { useHistory } from 'react-router-dom';
+
+
 import ExpandedPictureBox from '../../Components/ExpandedPictureBox';
 import PictureBox from '../../Components/UI/PictureBox';
 import Spinner from '../../Components/UI/Spinner/Spinner';
@@ -10,23 +13,24 @@ type ReactProjectsProps = {
 };
 
 const ReactProjects:React.FC<ReactProjectsProps> = () => {
-    
+    const history = useHistory(); 
     const {Reactprojects, loading} = useContext(ProjectsContext);
     const {changeModalContent, changeModalState} = useContext(ModalContext);
 
-    const activeModal = (index: number, type: string) => {
+    const activeModalAndChangeRoute = (index: number, type: string, description:string) => {
         changeModalContent(<ExpandedPictureBox  index= {index} type = {type}/>); 
         changeModalState(true); 
+        history.push("/" +description); 
     }
 
-    return loading ? <Spinner/>  : <div style = {{display: "flex", alignItems: "center",justifyContent: "center", flexWrap: "wrap" , height: "100%", overflowY: "scroll" }}>
+    return loading ? <Spinner/>  : <div style = {{display: "flex", alignItems: "center",justifyContent: "space-evenly", flexWrap: "wrap" , height: "100%", overflowY: "scroll" }}>
         {
             Reactprojects.map((value, index) =>{
                 return <PictureBox 
                     description = {value.description} 
                     link ={value.link}  
                     key = {value.description}
-                    onClick = {() =>activeModal(index, "react")}
+                    onClick = {() =>activeModalAndChangeRoute(index, "react", value.description)}
                     />
             })
         }

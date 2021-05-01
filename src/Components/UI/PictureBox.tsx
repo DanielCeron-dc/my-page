@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { CSSProperties, useState } from 'react';
 
 type PictureBoxProps = {
@@ -26,19 +27,21 @@ const PictureBox:React.FC<PictureBoxProps> = (props) => {
     
     const [Hover, setHover] = useState(false); 
 
-    return <div 
+    return <motion.div 
+        layoutId = {"div" + props.description}
         style = {Hover ? {...style,  backgroundColor: "grey", cursor: "pointer"} : style}
         onMouseOver = {() => setHover(true)}
         onMouseLeave = {() => setHover(false)}
         onClick = {props.onClick}
     >
-        <img src= {props.link ? props.link : valorantImage_}
+        <motion.img src= {props.link ? props.link : valorantImage_}
         width ="225px"
         height = "70%"
         style = {{display: "grid" }}
         alt = "sis"
-        ></img>
-        <h4>{props.description ? props.description : "Project Name"}</h4>
-    </div>
+        layoutId = {props.description}
+        />
+        <motion.h4  layoutId = {"h1" + props.description}>{props.description ? props.description : "Project Name"}</motion.h4>
+    </motion.div>
 }
 export default PictureBox;

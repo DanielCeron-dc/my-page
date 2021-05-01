@@ -16,7 +16,6 @@ const TransparentBox:React.FC = (props) => {
     useEffect(() => {
         setTimeout(() => {
             updateComponentDimensions(); 
-            
         }, 400);
     }, [hover])
 
@@ -39,24 +38,16 @@ const TransparentBox:React.FC = (props) => {
             >
 
                 {hover && 
-                    [<Rectangle 
+                    <Rectangle 
                     initialX = {0} 
                     initialY = {0}  
                     finalX = {0} 
-                    finalY ={componentHeight-100}/> , 
-                    <Rectangle 
-                    initialX = {(componentWidth / 2) - 15} 
-                    initialY = {0}  
-                    finalX = {(componentWidth / 2) - 15} 
-                    finalY ={componentHeight-100}/> , 
-                    <Rectangle 
-                    initialX = {componentWidth - 30} 
-                    initialY = {0}  
-                    finalX = {componentWidth - 30} 
-                    finalY ={componentHeight-100}/> , 
-                ]
+                    finalY ={componentHeight-(componentHeight * 0.3)}
+                    width = {componentWidth}
+                    height = {componentHeight * 0.3}
+                    /> 
                 }
-                <div style  = {{display: "block", zIndex: 30, position: "relative", height: 500,  width: "100%",}}>
+                <div style  = {{display: "block", zIndex: 30, position: "relative", height: 500,  width: "100%"}}>
                     {props.children}
                 </div>
 

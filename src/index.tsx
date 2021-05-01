@@ -1,7 +1,9 @@
 import React from 'react';
+import ReactDOM from 'react-dom'; 
+import {AnimateSharedLayout } from "framer-motion";
+import {BrowserRouter} from "react-router-dom";  
 import './index.css';
 
-import ReactDOM from 'react-dom';
 import App from './Containers/App';
 import ProjectsProvider from "./Provider/Projects"; 
 import AuthProvider from "./Provider/Auth"; 
@@ -9,14 +11,20 @@ import ModalProvider from "./Provider/Modal";
 
 
 ReactDOM.render(
+
+
   <React.StrictMode>
-    <ProjectsProvider>
-      <AuthProvider>
-        <ModalProvider>
-          <App />
-        </ModalProvider>
-      </AuthProvider>
-    </ProjectsProvider>
+    <BrowserRouter>
+      <AnimateSharedLayout type = "crossfade">
+        <ProjectsProvider>
+          <AuthProvider>
+            <ModalProvider>
+              <App />
+            </ModalProvider>
+          </AuthProvider>
+        </ProjectsProvider>
+      </AnimateSharedLayout>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
