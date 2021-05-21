@@ -28,13 +28,14 @@ const PictureBox:React.FC<PictureBoxProps> = (props) => {
     const [Hover, setHover] = useState(false); 
 
     return <motion.div 
-        layoutId = {"div" + props.description}
+        layoutId = {"white" + props.description}
         style = {Hover ? {...style,  backgroundColor: "grey", cursor: "pointer"} : style}
         onMouseOver = {() => setHover(true)}
         onMouseLeave = {() => setHover(false)}
         onClick = {props.onClick}
     >
         <motion.img src= {props.link ? props.link : valorantImage_}
+        
         width ="225px"
         height = "70%"
         style = {{display: "grid" }}
@@ -44,4 +45,4 @@ const PictureBox:React.FC<PictureBoxProps> = (props) => {
         <motion.h4  layoutId = {"h1" + props.description}>{props.description ? props.description : "Project Name"}</motion.h4>
     </motion.div>
 }
-export default PictureBox;
+export default React.memo(PictureBox);

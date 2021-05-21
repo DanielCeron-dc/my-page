@@ -9,6 +9,7 @@ export interface IProjectInfo {
     link: string; 
     language: string;
     key: string;
+    image: ImageData; 
 }
 
 export const initialState:IState = {

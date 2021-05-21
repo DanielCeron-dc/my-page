@@ -10,7 +10,7 @@ import {signInWithGoogle, singOutFromGoogle } from "../../firebase";
 import { AuthContext } from '../../Provider/Auth/AuthContext';
 
 interface IProps {
-    hover: boolean
+    isActive: boolean
 }
 
 const PersonalInfo:React.FC<IProps> = (props) => {
@@ -32,7 +32,7 @@ const PersonalInfo:React.FC<IProps> = (props) => {
 
     return <Column height="95%">
         
-        {props.hover ?
+        {props.isActive ?
             <>
                 <img src={logo} alt="Perfil foto" height="90" style={{ borderRadius: 50, }} />
                 <h1 style={{ color: "white" }}  onClick={() => setCount(count => count+1)}>Hello i'm Daniel Cerón</h1>

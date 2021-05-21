@@ -13,7 +13,7 @@ import styles from "./animations.module.css";
 
 
 interface IProps {
-    hover: boolean
+    isActive: boolean
 }
 
 const FlutterInfo:React.FC<IProps> = (props) => {
@@ -30,7 +30,7 @@ const FlutterInfo:React.FC<IProps> = (props) => {
     return <Column height = "95%">
             <img src={logo} alt="React Logo" height = "90"
                 style = {{margin: "15px 0px 15px 0px"}}
-                className = {props.hover ? styles.FlutterLogo : ""}
+                className = {props.isActive ? styles.FlutterLogo : ""}
             />
             <h1 style = {{color: "white"}}>Flutter Projects</h1>
             <Spacer/>

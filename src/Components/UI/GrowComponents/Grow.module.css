@@ -12,9 +12,3 @@
 	-moz-transition:width 500ms;
 	transition:width 500ms;
 }
-.growContainer:hover .grow{
-	width:20%;
-}
-.growContainer:hover .grow:hover {
-	width:40%;
-}

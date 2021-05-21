@@ -1,4 +1,4 @@
-import {useState,  useLayoutEffect}  from "react"; 
+import {useState,  useLayoutEffect, useCallback}  from "react"; 
 
 function useComponentDimensions(targetRef:React.RefObject<HTMLDivElement>){
 
@@ -10,13 +10,13 @@ function useComponentDimensions(targetRef:React.RefObject<HTMLDivElement>){
     }, [targetRef.current]);
 
 
-    const updateDimensions = () => {
+    const updateDimensions = useCallback(() => {
         console.log("HOLA");
         
         if(targetRef.current == null ) return;  
         setHeight(targetRef.current.offsetHeight);
         setWidth(targetRef.current.offsetWidth);
-    } 
+    }, [])
 
     return [ width, height, updateDimensions] as const; 
 }
