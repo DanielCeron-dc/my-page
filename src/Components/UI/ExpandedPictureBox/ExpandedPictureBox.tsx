@@ -19,12 +19,14 @@ const imageStyle: CSSProperties = {
     zIndex: 100,
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
+
 }
 
 const ExpandedPictureBox: React.FC<ExpandedPictureBoxProps> = ({ type, index }) => {
-    let { id } = useParams<{ id: string }>();
+
     const [, pageWidth] = usePageDimension();
-    console.log(id);
+
+
 
     const backGroundStyle: CSSProperties = {
         position: "relative",
@@ -33,17 +35,23 @@ const ExpandedPictureBox: React.FC<ExpandedPictureBoxProps> = ({ type, index }) 
         backgroundColor: "white",
         zIndex: 100,
         borderRadius: 20,
+
     }
 
     const { FlutterProjects, Reactprojects } = useContext(ProjectsContext);
     const selectedProject: IProjectInfo = type === "react" ? Reactprojects[index] : FlutterProjects[index];
-    return <motion.div style={backGroundStyle} layoutId={"white" + id} onClick={(e) => { e.stopPropagation() }}>
+    return <motion.div style={backGroundStyle} layoutId={"background-" + selectedProject.id} onClick={(e) => { e.stopPropagation() }}>
         <motion.img src={selectedProject.link}
             style={imageStyle}
             alt=""
-            layoutId={id}
+            layoutId={"img-" + selectedProject.id}
         />
-        <motion.h1 layoutId={"h1" + id}>{selectedProject.description}</motion.h1>
+        <motion.h1 layoutId={"title-" + selectedProject.id} style={{ margin: 10 }}>{selectedProject.title}</motion.h1>
+        <div style={{ fontSize: 30, margin: 20 }}>
+            {selectedProject.description}
+        </div>
+
+
     </motion.div>
 }
 export default ExpandedPictureBox;

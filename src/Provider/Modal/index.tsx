@@ -5,13 +5,13 @@ import ModalReducer, { initialState } from "./Modal.reducer";
 import { ModalContext } from "./Modal.context";
 import BackDrop from './BackDrop';
 
-import { useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 
 
 const Index: React.FC = (props) => {
     const [state, dispatch] = useReducer(ModalReducer, initialState);
-    let { id } = useParams<{ id: string }>();
+    const history = useHistory();
 
     const changeModalContent = (content: ReactNode) => {
         dispatch({ type: "CHANGE_MODAL_CONTENT", payload: { content } });
@@ -23,6 +23,7 @@ const Index: React.FC = (props) => {
 
     const onBackDropClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         e.stopPropagation();
+        history.push("/");
         changeModalState(false);
     }
 

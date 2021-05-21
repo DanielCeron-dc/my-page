@@ -17,10 +17,10 @@ const ReactProjects: React.FC<ReactProjectsProps> = () => {
     const { Reactprojects, loading } = useContext(ProjectsContext);
     const { changeModalContent, changeModalState } = useContext(ModalContext);
 
-    const activeModalAndChangeRoute = (index: number, type: string, description: string) => {
+    const activeModalAndChangeRoute = (index: number, type: string) => {
         changeModalContent(<ExpandedPictureBox index={index} type={type} />);
         changeModalState(true);
-        history.push("/" + description);
+        history.push("/" + index + "/" + type);
     }
 
     return loading ?
@@ -37,10 +37,8 @@ const ReactProjects: React.FC<ReactProjectsProps> = () => {
             {
                 Reactprojects.map((value, index) => {
                     return <PictureBox
-                        description={value.description}
-                        link={value.link}
-                        key={value.description}
-                        onClick={() => activeModalAndChangeRoute(index, "react", value.description)}
+                        projectInfo={value}
+                        onClick={() => activeModalAndChangeRoute(index, "react")}
                     />
                 })
             }
