@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AnimateSharedLayout } from "framer-motion";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import './index.css';
 
 import App from './Containers/App';
@@ -11,7 +11,7 @@ import AuthProvider from "./Provider/Auth";
 
 ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <AnimateSharedLayout type="crossfade">
         <ProjectsProvider>
           <AuthProvider>
@@ -19,7 +19,7 @@ ReactDOM.render(
           </AuthProvider>
         </ProjectsProvider>
       </AnimateSharedLayout>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );

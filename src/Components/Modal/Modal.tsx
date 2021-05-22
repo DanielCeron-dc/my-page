@@ -11,7 +11,6 @@ const Modal: React.FC = () => {
     const [selectedProject, setSelectedProject] = useState<IProjectInfo | undefined>(undefined);
 
     const { FlutterProjects, Reactprojects, loading } = useContext(ProjectsContext);
-
     const { index, type } = useParams<{ type: string, index: string }>();
     const history = useHistory();
 
