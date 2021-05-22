@@ -11,7 +11,6 @@ const TransparentBox: React.FC = (props) => {
 
     const transparentBoxref = useRef<HTMLDivElement>(null);
     const [componentWidth, componentHeight, updateComponentDimensions] = useComponentDimensions(transparentBoxref);
-    console.log("componentWidth: " + componentWidth);
 
     useEffect(() => {
         setTimeout(() => {

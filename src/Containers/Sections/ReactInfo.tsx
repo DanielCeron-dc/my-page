@@ -8,9 +8,8 @@ import TransparentBox from '../../Components/UI/TransparentBox';
 import ReactProjects from '../subSections/ReactProjects';
 import styles from "./animations.module.css";
 import StadiumButton from '../../Components/UI/StadiumButton';
-import AddNewProjectMenu from '../../Components/UI/AddNewProjectMenu';
 import { AuthContext } from '../../Provider/Auth/AuthContext';
-import { ModalContext } from '../../Provider/Modal/Modal.context';
+
 
 
 interface IProps {
@@ -18,12 +17,6 @@ interface IProps {
 }
 const ReactInfo: React.FC<IProps> = (props) => {
     const { user } = useContext(AuthContext);
-    const { changeModalContent, changeModalState } = useContext(ModalContext);
-
-    const activeModal = () => {
-        changeModalContent(<AddNewProjectMenu language="React" />);
-        changeModalState(true);
-    }
 
     return <Column height="95%">
         <img src={logo} alt="React Logo" height="90"
@@ -36,7 +29,7 @@ const ReactInfo: React.FC<IProps> = (props) => {
             <ReactProjects />
         </TransparentBox>
         <Spacer />
-        {user ? <StadiumButton onClick={() => activeModal()}> + </StadiumButton> : <></>}
+        {user ? <StadiumButton onClick={() => { }}> + </StadiumButton> : <></>}
     </Column>
 }
 export default React.memo(ReactInfo);

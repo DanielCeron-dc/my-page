@@ -1,26 +1,21 @@
 import React from 'react';
-import ReactDOM from 'react-dom'; 
-import {AnimateSharedLayout } from "framer-motion";
-import {BrowserRouter} from "react-router-dom";  
+import ReactDOM from 'react-dom';
+import { AnimateSharedLayout } from "framer-motion";
+import { BrowserRouter } from "react-router-dom";
 import './index.css';
 
 import App from './Containers/App';
-import ProjectsProvider from "./Provider/Projects"; 
-import AuthProvider from "./Provider/Auth"; 
-import ModalProvider from "./Provider/Modal"; 
+import ProjectsProvider from "./Provider/Projects";
+import AuthProvider from "./Provider/Auth";
 
 
 ReactDOM.render(
-
-
   <React.StrictMode>
     <BrowserRouter>
-      <AnimateSharedLayout type = "crossfade">
+      <AnimateSharedLayout type="crossfade">
         <ProjectsProvider>
           <AuthProvider>
-            <ModalProvider>
-              <App />
-            </ModalProvider>
+            <App />
           </AuthProvider>
         </ProjectsProvider>
       </AnimateSharedLayout>

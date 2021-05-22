@@ -14,11 +14,13 @@ const bounceTransition: Transition | undefined = {
   y: {
     duration: 3,
     type: "spring",
-    yoyo: Infinity
+    repeat: Infinity,
+    repeatType: "reverse"
   },
   backgroundColor: {
     duration: 6,
-    yoyo: Infinity,
+    repeat: Infinity,
+    repeatType: "reverse",
     ease: "easeOut",
     repeatDelay: 0.8,
   },

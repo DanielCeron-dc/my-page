@@ -1,15 +1,14 @@
 import React, { CSSProperties, useContext } from 'react';
 import { motion } from 'framer-motion';
-import { useParams } from 'react-router-dom';
 
 
 import { ProjectsContext } from '../../../Provider/Projects/ProjectsContext';
 import { IProjectInfo } from '../../../Provider/Projects/ProjectsReducer';
 import usePageDimension from '../../../hooks/usePageDimensions';
+import { InflateRaw } from 'node:zlib';
 
 type ExpandedPictureBoxProps = {
-    index: number;
-    type: string;
+    projectInfo: IProjectInfo;
 };
 
 const imageStyle: CSSProperties = {
@@ -22,11 +21,9 @@ const imageStyle: CSSProperties = {
 
 }
 
-const ExpandedPictureBox: React.FC<ExpandedPictureBoxProps> = ({ type, index }) => {
+const ExpandedPictureBox: React.FC<ExpandedPictureBoxProps> = ({ projectInfo }) => {
 
     const [, pageWidth] = usePageDimension();
-
-
 
     const backGroundStyle: CSSProperties = {
         position: "relative",
@@ -35,23 +32,18 @@ const ExpandedPictureBox: React.FC<ExpandedPictureBoxProps> = ({ type, index }) 
         backgroundColor: "white",
         zIndex: 100,
         borderRadius: 20,
-
     }
 
-    const { FlutterProjects, Reactprojects } = useContext(ProjectsContext);
-    const selectedProject: IProjectInfo = type === "react" ? Reactprojects[index] : FlutterProjects[index];
-    return <motion.div style={backGroundStyle} layoutId={"background-" + selectedProject.id} onClick={(e) => { e.stopPropagation() }}>
-        <motion.img src={selectedProject.link}
+    return <motion.div style={backGroundStyle} layoutId={"background-" + projectInfo.id} onClick={(e) => { e.stopPropagation() }}>
+        <motion.img src={projectInfo.link}
             style={imageStyle}
             alt=""
-            layoutId={"img-" + selectedProject.id}
+            layoutId={"img-" + projectInfo.id}
         />
-        <motion.h1 layoutId={"title-" + selectedProject.id} style={{ margin: 10 }}>{selectedProject.title}</motion.h1>
+        <motion.h1 layoutId={"title-" + projectInfo.id} style={{ margin: 10 }}>{projectInfo.title}</motion.h1>
         <div style={{ fontSize: 30, margin: 20 }}>
-            {selectedProject.description}
+            {projectInfo.description}
         </div>
-
-
     </motion.div>
 }
 export default ExpandedPictureBox;
