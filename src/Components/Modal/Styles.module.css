@@ -2,12 +2,17 @@
 .BackDrop {
     align-items: center;
     position: fixed;
+    
     background: rgba(0, 0, 0, 0.8);
     will-change: opacity;
     height: 100%;
-    overflow: visible;
+    overflow: hidden;
     width: 100%;
     display: flex;
     justify-content: center;
+    top:0; 
+    left: 0;
+    z-index: 100;
+    scroll-behavior: inherit;
     
 }

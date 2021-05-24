@@ -6,8 +6,7 @@ interface IProps {
   initialY: number,
   finalX: number,
   finalY: number,
-  width: number,
-  height: number,
+
 }
 
 const bounceTransition: Transition | undefined = {
@@ -34,8 +33,11 @@ const Rectanglestyle: CSSProperties = {
   left: 0,
   top: 0,
   borderRadius: "20%",
-  filter: "blur(20px)"
+  filter: "blur(20px)",
+  width: "100%",
+  height: "20%"
 }
+
 
 
 const Rectangle: React.FC<IProps> = (props) => {
@@ -45,9 +47,8 @@ const Rectangle: React.FC<IProps> = (props) => {
       y: [props.initialY, props.finalY],
       backgroundColor: ["rgba(255, 255, 255, 0.5)", "rgba(0,0 , 0, 0.2)"],
     }}
-    style={{ ...Rectanglestyle, height: props.height, width: props.width, }}
+    style={{ ...Rectanglestyle }}
     transition={bounceTransition}
-
   >
   </motion.div>
 

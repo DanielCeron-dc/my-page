@@ -1,11 +1,11 @@
-import React, { CSSProperties, useContext } from 'react';
+import React, { CSSProperties } from 'react';
 import { motion } from 'framer-motion';
 
-
-import { ProjectsContext } from '../../../Provider/Projects/ProjectsContext';
 import { IProjectInfo } from '../../../Provider/Projects/ProjectsReducer';
 import usePageDimension from '../../../hooks/usePageDimensions';
-import { InflateRaw } from 'node:zlib';
+import { useHistory } from 'react-router';
+import CloseButton from '../CloseButton';
+
 
 type ExpandedPictureBoxProps = {
     projectInfo: IProjectInfo;
@@ -24,17 +24,23 @@ const imageStyle: CSSProperties = {
 const ExpandedPictureBox: React.FC<ExpandedPictureBoxProps> = ({ projectInfo }) => {
 
     const [, pageWidth] = usePageDimension();
+    const history = useHistory();
 
     const backGroundStyle: CSSProperties = {
         position: "relative",
-        display: "block",
+        display: "inline-block",
         width: pageWidth < 1000 ? "90%" : "50%",
         backgroundColor: "white",
         zIndex: 100,
         borderRadius: 20,
     }
 
+    const closeModalHandler = () => {
+        history.push("/");
+    }
+
     return <motion.div style={backGroundStyle} layoutId={"background-" + projectInfo.id} onClick={(e) => { e.stopPropagation() }}>
+        <CloseButton onClick={closeModalHandler} />
         <motion.img src={projectInfo.link}
             style={imageStyle}
             alt=""

@@ -26,7 +26,7 @@ const Modal: React.FC = () => {
             }
             setSelectedProject(newSelectedProject);
         }
-    }, [loading, index, type]);
+    }, [loading, index, type, Reactprojects, FlutterProjects, history]);
 
     return <AnimatePresence>
         {selectedProject && <BackDrop onClick={onBackDropClick}>

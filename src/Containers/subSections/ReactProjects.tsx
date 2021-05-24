@@ -10,9 +10,10 @@ const ReactProjects: React.FC = () => {
     const history = useHistory();
     const { Reactprojects, loading } = useContext(ProjectsContext);
 
-    const activeModalAndChangeRoute = (index: number, type: string) => {
-        history.push("/" + type + "/" + index);
+    const changeRoute = (index: number) => {
+        history.push("/react/" + index);
     }
+
 
     return loading ?
         <Spinner /> :
@@ -30,7 +31,7 @@ const ReactProjects: React.FC = () => {
                     return <PictureBox
                         key={value.id}
                         projectInfo={value}
-                        onClick={() => activeModalAndChangeRoute(index, "react")}
+                        onClick={() => changeRoute(index)}
                     />
                 })
             }

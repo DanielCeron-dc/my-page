@@ -14,8 +14,8 @@ const FlutterProjects: React.FC<FlutterProjectsProps> = () => {
     const history = useHistory();
     const { FlutterProjects, loading } = useContext(ProjectsContext);
 
-    const activeModalAndChangeRoute = (index: number, type: string) => {
-        history.push("/" + type + "/" + index);
+    const changeRoute = (index: number) => {
+        history.push("/flutter/" + index);
     }
 
     return loading ?
@@ -29,12 +29,13 @@ const FlutterProjects: React.FC<FlutterProjectsProps> = () => {
             height: "100%",
             overflowY: "scroll"
         }}>
+
             {
                 FlutterProjects.map((value, index) => {
                     return <PictureBox
                         projectInfo={value}
                         key={value.id}
-                        onClick={() => activeModalAndChangeRoute(index, "react")}
+                        onClick={() => changeRoute(index)}
                     />
                 })
             }

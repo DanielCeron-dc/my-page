@@ -7,6 +7,8 @@ import './index.css';
 import App from './Containers/App';
 import ProjectsProvider from "./Provider/Projects";
 import AuthProvider from "./Provider/Auth";
+import ModalProvider from "./Provider/Modal";
+
 
 
 ReactDOM.render(
@@ -15,7 +17,9 @@ ReactDOM.render(
       <AnimateSharedLayout type="crossfade">
         <ProjectsProvider>
           <AuthProvider>
-            <App />
+            <ModalProvider>
+              <App />
+            </ModalProvider>
           </AuthProvider>
         </ProjectsProvider>
       </AnimateSharedLayout>

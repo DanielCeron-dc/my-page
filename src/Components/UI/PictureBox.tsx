@@ -14,11 +14,12 @@ const style: CSSProperties = {
     textAlign: "center",
     width: 225,
     height: 200,
-    display: "flex",
+
     flexDirection: "column",
     alignItems: "center",
-    border: "1px dashed black",
-    overflow: 'hidden'
+    border: "1px solid black",
+    overflow: 'hidden',
+    position: "unset"
 }
 
 const valorantImage_: string = "https://codigoesports.com/wp-content/uploads/2020/05/VALORANT_Jett.jpg";

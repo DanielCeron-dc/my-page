@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { Route } from "react-router-dom";
 import './App.css';
 
@@ -11,15 +11,17 @@ import usePageDimension from "../hooks/usePageDimensions";
 import Spacer from "../Components/Layout/Spacer";
 import Modal from "../Components/Modal/Modal";
 
+import { ModalContext } from "../Provider/Modal/ModalContext";
 
-let gradiant1: string = "linear-gradient(0deg, rgba(97,218,251,1) 21%, rgba(94,33,107,1) 71%)";
-let gradiant2: string = "linear-gradient(0deg, rgba(97,218,251,1) 16%, rgba(32,35,42,1) 75%)";
-let gradiant3: string = "linear-gradient(0deg, rgba(97,218,251,1) 21%, rgba(5,59,103,1) 76%)";
+let gradiant1: string = "linear-gradient(0deg, rgba(50,143,164,1) 0%, rgba(67,0,113,1) 38%)";
+let gradiant2: string = "linear-gradient(0deg, rgba(50,143,164,1) 0%, rgba(0,0,0,1) 38%)";
+let gradiant3: string = "linear-gradient(0deg, rgba(50,143,164,1) 0%, rgba(0,6,90,1) 38%)";
 
 
 const Content: React.FC = () => {
   const [selectedSection, setSelectedSection] = useState(0);
   const [, width] = usePageDimension();
+  const { modal } = useContext(ModalContext);
 
   const isSelected = (index: number) => {
     return selectedSection === index;
@@ -27,7 +29,9 @@ const Content: React.FC = () => {
 
   const desktop: boolean = width > 1000;
   return <>
+
     <Modal />
+    {modal}
     <GrowContainer column>
       <Grow color={gradiant1} onHover={() => setSelectedSection(1)} expand={isSelected(1)} TableCell={desktop}>
         <PersonalInfo isActive={isSelected(1)} />
